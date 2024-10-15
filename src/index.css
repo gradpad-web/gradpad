@@ -1,0 +1,250 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.floating-label input:focus-visible,
+.floating-label textarea:focus-visible {
+  outline: none;
+  /* box-shadow: none; */
+}
+
+.floating-label input,
+.floating-label textarea {
+  padding: 10px 12px !important;
+}
+
+.floating-label input.icon-end {
+    padding-right: 40px !important;
+}
+
+.floating-label input:valid+label,
+.floating-label input:focus+label,
+.floating-label textarea:valid+label,
+.floating-label textarea:focus+label {
+  top: -8px;
+  left: 0;
+}
+
+.vanta-canvas {
+    width: 100% !important;
+    height: 100vh !important;
+    opacity: 0.2;
+}
+
+.card {
+    transition: flex-grow 1s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-timing: 1s;
+}
+
+/* .card.active {
+    flex-grow: 100;
+  } */
+.card:hover {
+    flex-grow: 7;
+}
+
+.card>.background {
+    position: absolute;
+    inset: 0;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0.6);
+    /* z-index: -1; */
+    transition: var(--transition-timing) ease;
+}
+
+.card:hover>.background {
+    filter: brightness(1);
+}
+
+.card>.card-content {
+    transition: var(--transition-timing);
+}
+
+.card:hover>.card-content {
+    inset: 20px;
+    top: auto;
+}
+
+.card-content>* {
+    transition: var(--transition-timing);
+}
+
+.card-content>.profile-image {
+    min-width: 50px;
+    max-width: 50px;
+    height: 50px;
+    border: 1px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.card:hover .profile-image {
+    border: 1px solid rgb(110, 252, 205);
+}
+
+.profile-image>svg {
+    stroke: #fefefe;
+}
+
+.card:hover .profile-image>svg {
+    stroke: rgb(110, 252, 205);
+}
+
+.card-content>.title {
+    /* white-space: pre; */
+    translate: 0 100%;
+    color: #fff;
+    opacity: 0;
+}
+
+.card:hover .title {
+    opacity: 1;
+    translate: 0 0;
+}
+
+.card>.backdrop {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100px;
+    z-index: 0;
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7));
+}
+
+/* The switch - the box around the slider */
+#theme-toggle-button {
+    font-size: 20px;
+    position: relative;
+    display: inline-block;
+    width: 3em;
+    cursor: pointer;
+}
+
+/* Hide default HTML checkbox */
+#toggle {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+#container,
+#patches,
+#stars,
+#button,
+#sun,
+#moon,
+#cloud {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 0.25s;
+}
+
+/* night sky background */
+#toggle:checked+svg #container {
+    fill: #2b4360;
+}
+
+/* move button to right when checked */
+#toggle:checked+svg #button {
+    transform: translate(28px, 2.333px);
+}
+
+/* show/hide sun and moon based on checkbox state */
+#sun {
+    opacity: 1;
+}
+
+#toggle:checked+svg #sun {
+    opacity: 0;
+}
+
+#moon {
+    opacity: 0;
+}
+
+#toggle:checked+svg #moon {
+    opacity: 1;
+}
+
+/* show or hide background items on checkbox state */
+#cloud {
+    opacity: 1;
+}
+
+#toggle:checked+svg #cloud {
+    opacity: 0;
+}
+
+#stars {
+    opacity: 0;
+}
+
+#toggle:checked+svg #stars {
+    opacity: 1;
+}
+
+.gallery-item {
+    margin: 10px;
+}
+
+.mask-with-browser-support {
+    mask: linear-gradient(black, black), linear-gradient(black, black);
+    mask-clip: content-box, border-box;
+    mask-composite: exclude;
+    -webkit-mask:
+      linear-gradient(black, black) content-box,
+      linear-gradient(black, black);
+    -webkit-mask-clip: content-box, border-box;
+    -webkit-mask-composite: xor;
+}
+
+.footer-bg {
+    background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url('https://images.unsplash.com/photo-1632829882891-5047ccc421bc?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    width: 100%;
+    background-blend-mode: luminosity;
+    background-size: cover;
+}
+
+.link-anim::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: teal;
+    transition: width .3s;
+}
+
+.link-anim:hover::after {
+    width: 100%;
+}
+
+.show-border-outter .show-border {
+    border-width: 0px;
+}
+
+.show-border-outter:hover .show-border {
+    border-width: 2px;
+}
+
+.separator {
+    box-shadow: 0 -5px 15px #00000030;
+}
+
+.dark .separator {
+    box-shadow: 0 -5px 15px #ffffff30;
+}
+
+@media screen and (max-width: 767px) {
+    .mobile-nav {
+        left: 0;
+        right: 0;
+        width: 95%;
+        padding: 0 5px 0 25px;
+        backdrop-filter: blur(4px);
+    }
+}
