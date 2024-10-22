@@ -11,7 +11,7 @@ const Cards = ({ exploreTitle, exploreSubtitle }) => {
         const cities = response.data.data.map(city => ({
           title: city.Title,
           description: city.Description.map(item => item.children.map(child => child.text).join('')).join('\n'),
-          imgPath: `${city.Image.formats.large.url}`,
+          imgPath: `${city?.Image?.formats?.large?.url ? city.Image.formats.large.url:city.Image.url}`,
         }));
         setCardsData(cities);
       } catch (error) {
